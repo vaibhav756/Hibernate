@@ -16,7 +16,17 @@ public class Test {
 		st.setGender("Male");
 		st.setMarks(80);
 		
-		impl.saveStudent(st);
+		//impl.saveStudent(st);
 		
+		//get and load method
+		/*
+		 * Student stud= impl.loadStudent(101); try { Thread.sleep(10000);
+		 * }catch(Exception e) { e.printStackTrace(); } System.out.println(stud);
+		 */
+		
+		//Update Student
+		//Student updateStudent = impl.updateStudent(102, 55);
+		//System.out.println(updateStudent);
+		//impl.deleteStudent(102);
 	}
 }

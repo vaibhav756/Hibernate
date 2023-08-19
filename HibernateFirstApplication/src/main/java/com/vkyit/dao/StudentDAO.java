@@ -6,4 +6,9 @@ public interface StudentDAO {
 
 	void saveStudent(Student student);
 	
+	Student loadStudent(Integer sid);
+	
+	Student updateStudent(Integer sid,Integer marks);
+	
+	void deleteStudent(Integer sid);
 }

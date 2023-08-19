@@ -15,8 +15,17 @@ public class Testing {
 		stud.setGender("Male");
 		stud.setMarks(59);
 		
-		dao.saveStudent(stud);
+		//dao.saveStudent(stud);
+		//Load Student
+		//Student student = dao.loadStudent(102);
+		//System.out.println(student);
 		
+		//Update Student
+		//Student updateStudent = dao.updateStudent(102, 99);
+		//System.out.println(updateStudent);
+		
+		//Delete Student
+		//dao.deleteStudent(102);
 	}
 
 }

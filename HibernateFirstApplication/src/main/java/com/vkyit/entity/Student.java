@@ -33,5 +33,9 @@ public class Student {
 	public Student() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "Student [sid=" + sid + ", sname=" + sname + ", gender=" + gender + ", marks=" + marks + "]";
+	}
 	
 }

@@ -1,7 +1,5 @@
 package com.vkyit.daoimpl;
 
-import java.io.Serializable;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -45,6 +43,67 @@ public class StudentDAOImpl implements StudentDAO{
 		{
 			session.close();
 		}
+	}
+
+	@Override
+	public Student loadStudent(Integer sid) {
+		Session session=factory.openSession();
+		Student stud=null;
+		try
+		{
+			//stud = session.get(Student.class, sid);
+			stud = session.load(Student.class, sid);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		//session.close();
+		return stud;
+	}
+
+	@Override
+	public Student updateStudent(Integer sid, Integer marks) {
+		Session session=factory.openSession();
+		Transaction trans=session.beginTransaction();
+		Student student = session.get(Student.class, sid);
+		student.setMarks(marks);
+		try
+		{
+			session.update(student);
+			trans.commit();
+			System.out.println("Student object is updated.");
+		}catch(Exception e)
+		{
+			trans.rollback();
+			System.out.println("Student object is not updated.");
+			e.printStackTrace();
+		}
+		finally
+		{
+			session.close();
+		}
+		return student;
+	}
+
+	@Override
+	public void deleteStudent(Integer sid) {
+		Session session=factory.openSession();
+		Transaction trans=session.beginTransaction();
+        try
+        {
+        	Student student = session.get(Student.class, sid);
+        	session.delete(student);
+        	trans.commit();
+        	System.out.println("Student with studId : "+sid+" has been deleted.");
+        }catch(Exception e)
+        {
+        	trans.rollback();
+        	System.out.println("Deletion operation failed for studId : "+sid);
+        	e.printStackTrace();
+        }finally
+        {
+        	session.close();
+        }
 	}
 
 }
