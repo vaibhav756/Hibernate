@@ -28,5 +28,8 @@ public class Test {
 		//Student updateStudent = impl.updateStudent(102, 55);
 		//System.out.println(updateStudent);
 		//impl.deleteStudent(102);
+		
+		//For cache testing
+		impl.cacheTesting(101);
 	}
 }

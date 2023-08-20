@@ -106,4 +106,21 @@ public class StudentDAOImpl implements StudentDAO{
         }
 	}
 
+	@Override
+	public void cacheTesting(Integer sid) {
+		
+		Session session=factory.openSession();
+		Session session2=factory.openSession();
+		
+		Student student = session.get(Student.class, 101);
+		Student student1 = session.get(Student.class, 102);
+		//To remove particular object from cache we use evict method
+		//session.evict(student);
+		
+		//To remove all object from cache we use clear method
+		//session.clear();
+		Student student2 = session.get(Student.class, 101);
+		Student student3 = session2.get(Student.class, 101);
+	}
+
 }

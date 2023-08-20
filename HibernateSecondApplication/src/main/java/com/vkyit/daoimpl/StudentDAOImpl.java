@@ -96,4 +96,18 @@ public class StudentDAOImpl implements StudentDAO{
     }
 		
 	}
+
+	//Check console for L1 caching mechanism
+	@Override
+	public void cacheTesting(Integer sid) {
+		
+		Session session=factory.openSession();
+		Session session2=factory.openSession();
+		
+		Student student = session.get(Student.class, 101);
+		Student student2 = session.get(Student.class, 102);
+		Student student3 = session.get(Student.class, 101);
+		Student student4 = session2.get(Student.class, 101);
+		
+	}
 }

@@ -11,4 +11,6 @@ public interface StudentDAO {
 	Student updateStudent(Integer sid,Integer marks);
 	
 	void deleteStudent(Integer sid);
+	
+	void cacheTesting(Integer sid);
 }

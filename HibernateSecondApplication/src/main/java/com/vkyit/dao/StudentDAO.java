@@ -7,4 +7,5 @@ public interface StudentDAO {
 	Student loadStudent(Integer sid);
 	Student updateStudent(Integer sid,Integer mark);
 	void deleteStudent(Integer sid);
+	void cacheTesting(Integer sid);
 }
