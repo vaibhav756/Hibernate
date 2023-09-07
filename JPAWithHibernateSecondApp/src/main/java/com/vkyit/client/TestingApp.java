@@ -10,13 +10,21 @@ public class TestingApp {
 
 		CourseDAO dao=new CourseDAOImpl();
 		Courses course=new Courses();
-		course.setCourseId(101);
-		course.setCourseName("Core Java");
-		course.setCoursePrice(5000);
+		course.setCourseId(105);
+		course.setCourseName("Adv Java");
+		course.setCoursePrice(8000);
 		course.setCourseDuration(3);
 		
-		dao.saveCourse(course);
-
+		//dao.saveCourse(course);
+        //Find Course ByCourseId
+		//Courses course1 = dao.getCourseById(101);
+		
+		//Update Course price
+		//dao.updateCourse(105,6000);
+		
+		//Delete Course
+		dao.deleteCourse(105);
+		
 	}
 
 }

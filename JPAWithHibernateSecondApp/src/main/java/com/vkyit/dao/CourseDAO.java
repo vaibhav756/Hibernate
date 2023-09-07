@@ -8,7 +8,7 @@ public interface CourseDAO {
 	
 	Courses getCourseById(Integer courseId);
 	
-	void updateCourse(Integer coursePrice);
+	void updateCourse(Integer courseId,Integer coursePrice);
 	
 	void deleteCourse(Integer courseId);
 	

@@ -10,57 +10,98 @@ import com.vkyit.entity.Courses;
 
 public class CourseDAOImpl implements CourseDAO {
 
-	private EntityManagerFactory factory=Persistence.createEntityManagerFactory("test");
-	
+	private static EntityManagerFactory factory=Persistence.createEntityManagerFactory("test");
+
 	@Override
 	public void saveCourse(Courses course) {
 		EntityManager em=factory.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx=em.getTransaction();
 		try
 		{
 			tx.begin();
 			em.persist(course);
 			tx.commit();
-			System.out.println("Course added successfully.");
+		    System.out.println("Course stored successfully.");
 		}catch(Exception e)
 		{
 			tx.rollback();
 			e.printStackTrace();
-			System.out.println("Course addition failed "+course);
+			System.out.println("Course stored failed : "+course);
 		}finally
 		{
 			em.close();
 		}
-
+		
 	}
 
 	@Override
 	public Courses getCourseById(Integer courseId) {
 		EntityManager em=factory.createEntityManager();
 		EntityTransaction tx=em.getTransaction();
+		Courses course=null;
 		try
 		{
-			
+			tx.begin();
+			course = em.find(Courses.class, courseId);
+			System.out.println("Course retrieval successfull : "+course);
+			tx.commit();
 		}catch(Exception e)
 		{
 			tx.rollback();
 			e.printStackTrace();
+			System.out.println("Course retrival failed for Id : "+courseId);
 		}finally
 		{
 			em.close();
 		}
-		return null;
+		return course;
 	}
 
 	@Override
-	public void updateCourse(Integer coursePrice) {
-		// TODO Auto-generated method stub
-
+	public void updateCourse(Integer courseId,Integer coursePrice) {
+		EntityManager em=factory.createEntityManager();
+		EntityTransaction tx=em.getTransaction();
+		Courses course=null;
+		try
+		{
+			tx.begin();
+			course = em.find(Courses.class, courseId);
+			course.setCoursePrice(coursePrice);
+			em.persist(course);
+			tx.commit();
+			System.out.println("Course updation of courseId : "+courseId+" with Price : "+coursePrice+" is successfull.");
+		}catch(Exception e)
+		{
+			tx.rollback();
+			e.printStackTrace();
+			System.out.println("Course updation of courseId : "+courseId+" failed.");
+			
+		}finally
+		{
+			em.close();
+		}
 	}
 
 	@Override
 	public void deleteCourse(Integer courseId) {
-		// TODO Auto-generated method stub
+		EntityManager em=factory.createEntityManager();
+		EntityTransaction tx=em.getTransaction();
+		try
+		{
+			tx.begin();
+			Courses course = em.find(Courses.class, courseId);
+			em.remove(course);
+			tx.commit();
+			System.out.println("Course with courseId : "+courseId+" deleted successfully.");
+		}catch(Exception e)
+		{
+			tx.rollback();
+			e.printStackTrace();
+			System.out.println("Course with courseId : "+courseId+" deletion failed.");
+		}finally
+		{
+			em.close();
+		}
 
 	}
 
