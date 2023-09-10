@@ -11,7 +11,7 @@ public class ClientApp {
 	public static void main(String[] args) {
 
 		EmployeeDao dao=new EmployeeDaoImpl();
-		List<Employee> allEmployees = dao.getAllEmployees();
+		List<Employee> allEmployees = dao.getEmployeeDatails(7521);
 		allEmployees.forEach(System.out::println);
 		
 	}

@@ -1,6 +1,7 @@
 package com.vkyit.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,10 @@ import javax.persistence.Table;
 				@StoredProcedureParameter(mode=ParameterMode.OUT,type=String.class,name="NAME"),
 				@StoredProcedureParameter(mode=ParameterMode.OUT,type=Integer.class,name="EXPERIENCE")
 				})
+@NamedStoredProcedureQuery(name="getAllEmps",procedureName="get_all_emp",
+		parameters= {
+				@StoredProcedureParameter(mode=ParameterMode.OUT,type=List.class,name="emp_details")
+		})
 public class Employee {
 
 	@Id

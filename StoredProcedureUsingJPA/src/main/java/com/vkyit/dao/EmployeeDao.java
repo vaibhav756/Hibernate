@@ -7,5 +7,7 @@ import com.vkyit.entity.Employee;
 public interface EmployeeDao {
 
 	List<Employee> getAllEmployees();
+
+	List<Employee> getEmployeeDatails(Integer empNo);
 	
 }

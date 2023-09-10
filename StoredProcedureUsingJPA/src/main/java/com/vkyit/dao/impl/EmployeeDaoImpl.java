@@ -16,7 +16,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	private EntityManagerFactory factory=Persistence.createEntityManagerFactory("test");
 	
 	@Override
-	public List<Employee> getAllEmployees() {
+	public List<Employee> getEmployeeDatails(Integer empNo) {
 		List<Employee> list=null;
 		EntityManager em=factory.createEntityManager();
 		EntityTransaction tx=em.getTransaction();
@@ -24,10 +24,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		{
 			tx.begin();
 			StoredProcedureQuery spq=em.createNamedStoredProcedureQuery("getEmpExp");
-			spq.setParameter("ENO",7839);
+			spq.setParameter("ENO",empNo);
+			
+			//StoredProcedureQuery spq = em.createNamedStoredProcedureQuery("getAllEmps");
 			spq.execute();
 			String name = (String)spq.getOutputParameterValue("NAME");
 			Integer exp = (Integer)spq.getOutputParameterValue("EXPERIENCE");
+			//List<Employee> outputParameterValue = (List<Employee>)spq.getOutputParameterValue("emp_details");
 			tx.commit();
 			System.out.println(name+" - "+exp);
 		}catch(Exception e)
@@ -38,6 +41,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			em.close();
 		}
 		return list;
+	}
+
+	@Override
+	public List<Employee> getAllEmployees() {
+		return null;
 	}
 
 }
