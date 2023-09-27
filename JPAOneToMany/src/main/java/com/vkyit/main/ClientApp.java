@@ -10,7 +10,7 @@ import com.vkyit.entity.CategoryEntity;
 
 public class ClientApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		CategoryDao dao=new CategoryDaoImpl();
 		/*
@@ -83,6 +83,13 @@ public class ClientApp {
 		}
 		System.out.println("Mobile copy stored successfully.");
 		*/
+		
+		CategoryEntity category = dao.fetchCategoryById(101);
+		File file=new File("C:\\Users\\Vaibhav Yadav\\Downloads\\MobileCopy.jpg");
+		FileOutputStream fos=new FileOutputStream(file);
+		byte[] img=new byte[(int)file.length()];
+		img=category.getListOfProducts().get(0).getProductImage();
+		fos.write(img);
 		
 		//Delete Record based on CategoryId
 		//dao.removeCategory(101);
