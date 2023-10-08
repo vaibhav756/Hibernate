@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.vkyit</groupId>
-  <artifactId>JPAOneToMany</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>JPAOneToOne</artifactId>
+  <version>1.0</version>
 
-  <name>JPAOneToMany</name>
+  <name>JPAOneToOne</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
